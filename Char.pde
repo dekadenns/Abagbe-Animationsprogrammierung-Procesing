@@ -20,7 +20,7 @@ class Char {
     popStyle();
   }
 
-  public void fallingChar() { // Höhenveränderung für fallende Chars
+  public void fallingChar() { // Hoehenveraenderung für fallende Chars
     if (y < height-16) y = y + random(5, 15);
   }
 
@@ -32,7 +32,7 @@ class Char {
     distY = y - yT;
   }
 
-  public void flyingChar() { //lässt Char von (zufälliger) Startposition zu Zielposition fliegen
+  public void flyingChar() { //lässt Char von (zufaelliger) Startposition zu Zielposition fliegen
     if (x < xT) { 
       x = x + distX/40;
       if (xT - x < 0)x = xT;

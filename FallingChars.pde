@@ -6,7 +6,7 @@
 import processing.sound.*;
 
 
-//Buchstabengedöns
+//Buchstabengedoens
 Char[] arrCharsBottom; //Chars am Boden
 ArrayList<Char> arrCharsText = new ArrayList<Char>(); //Text / Fliegende Chars
 ArrayList<Char> arrCharsFalling = new ArrayList<Char>(); // Fallende Chars
@@ -22,7 +22,7 @@ String text = ""; //Text als String zum Erkennen, ob eine Farbe geschrieben wurd
 Circle kreis;
 int radius = 100; //Radius Lupe
 
-//Verschlüsselung
+//Verschluesselung
 int cesar = 10;
 boolean doEncoding = false;
 
@@ -111,7 +111,7 @@ void initCharArr() {  // Chars am Boden
   }
 }
 
-void delAll() {  //Löscht gesamten Text (ArrayList)
+void delAll() {  //Loescht gesamten Text (ArrayList)
   for (int i = 0; i < arrCharsText.size(); i++) {
     arrCharsFalling.add(arrCharsText.get(i));
   }
@@ -120,7 +120,7 @@ void delAll() {  //Löscht gesamten Text (ArrayList)
   compareColor();
 }
 
-void delLast() {  //löscht  den letzen Buchstaben
+void delLast() {  //loescht  den letzen Buchstaben
   arrCharsFalling.add(arrCharsText.get(arrCharsText.size()-1));
   arrCharsText.remove(arrCharsText.size()-1);
   text = text.substring(0, text.length() - 1);
@@ -176,7 +176,7 @@ void compareColor() { // Vergleicht den getippten Text mit Elementen aus dem vor
   }
 }
 
-void checkFont() {
+void checkFont() { // ueberprueft den geschriebenen Text, wenn change font erkannt wurde, aendert sich die Schriftart
   if (text.contains("change font")) {
     text.replaceAll("change font", "");
     for (int i = 0; i < 11; i++) {
@@ -189,21 +189,21 @@ void checkFont() {
 
 void keyPressed() {  //Tatatureingaben zur Texterstellung
   int k = (int)key; 
-  if (k == 9) { // Verschlüsselung aktivieren 
+  if (k == 9) { // Tabulator - Verschluesselung aktivieren 
     if (doEncoding == false) {
       doEncoding = true;
       typewriterEncoding.play();
     } else doEncoding = false;
   }
-  if (k == 127) { // ENTF - Löscht alle Chars
+  if (k == 127) { // ENTF - Loescht alle Chars
     typewriterDeleteAll.play();
     delAll();
   }
-  if (k ==8 && arrCharsText.size()>0) { // Löscht letzten Char <--
+  if (k ==8 && arrCharsText.size()>0) { // <-- Loescht letzten Char
     typewriterDelete.play();
     delLast(); //<--
   }
-  if (k == 32) { //Leerzeichen
+  if (k == 32) { // Leertaste - Leerzeichen
     typewriterClick.play();
     makeText(new Char(0, 0, 0, ' '));
   }  
@@ -218,7 +218,7 @@ void mouseMoved() {
   kreis.update(mouseX, mouseY);
 }
 
-void mousePressed() { // Vergrößerung/-kleinerung der Lupe am Mauszeiger
+void mousePressed() { // Vergroeßerung/-kleinerung der Lupe am Mauszeiger
   if (mouseButton == LEFT) kreis.rad += 10;
   if (mouseButton == RIGHT) kreis.rad -= 10;
 }
